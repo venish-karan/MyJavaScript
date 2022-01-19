@@ -56,3 +56,25 @@ const result = formatText("hello", function (text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 });
 console.log(result);
+
+// IIFE (Immediately invoked function expression)
+//  calls function automatically
+(function setUp() {
+  //   console.log("setup done!");
+})();
+
+// Arrow function
+
+// const logout = ((username, password) => {
+//   console.log("logged out");
+// })();
+
+const logout = ((username, password) => console.log("logged out"))();
+
+// Good practices
+
+// showUser, getUser, calcNumber
+
+// one function = one action // it should have name of what it is doing
+
+// function name should be descriptive not like a, b or something
