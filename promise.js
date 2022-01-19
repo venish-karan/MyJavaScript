@@ -5,51 +5,62 @@
 //   while (ms > new Date()) {}
 // }
 
-function register(callback) {
+function register() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("register end");
+      resolve(); // parameter for then
+      //   return reject("error while registering");
+    }, 3000);
+  });
+
   //   waitForSeconds();
-  setTimeout(() => {
-    console.log("register end");
-    callback();
-  }, 3000);
 }
 
-function sendEmail(cb) {
+function sendEmail() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Email end");
+    }, 3000);
+    resolve();
+  });
   //   waitForSeconds();
-  setTimeout(() => {
-    console.log("Email end");
-    cb();
-  }, 3000);
 }
 
-function login(cb) {
-  setTimeout(() => {
-    console.log("login end");
-    cb();
-  }, 3000);
+function login() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("login end");
+    }, 3000);
+    resolve();
+  });
 }
 
-function getUserData(cb) {
-  setTimeout(() => {
-    console.log("get user end");
-    cb();
-  }, 3000);
+function getUserData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("get user end");
+    }, 3000);
+    resolve();
+  });
 }
 
 function displayUserData() {
-  setTimeout(() => {
-    console.log("display data end");
-  }, 3000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("display data end");
+    }, 3000);
+    resolve();
+  });
 }
 
-// this is callback (this is also called as callback hell)
-register(function () {
-  sendEmail(() => {
-    login(() => {
-      getUserData(() => {
-        displayUserData();
-      });
-    });
+// we should call the function with name only not with brackets because if we do that it will run synchronous which means it will run first without obeying the order
+register()
+  .then(sendEmail) // resoleve parameter here
+  .then(login)
+  .then(getUserData)
+  .catch((error) => {
+    console.log("error:", error); // reject parameter here
   });
-});
 
 console.log("other application work");
