@@ -74,6 +74,7 @@ const failed = actors.filter((actor) => actor.payment < 100);
 // Map (return new array)
 
 const actorWithPayment = actors.map((actor) => {
+  // map(item itself, index of item)
   return {
     actorPayment: `${actor.name} ${actor.payment}`,
   };
@@ -105,8 +106,59 @@ const movies = [
 // reduce
 const total = movies.reduce((acc, movie) => {
   // naming convention acc = accumulator
+  // acc is the local varirable in the function itself
   acc = acc + movie.budget;
   return acc;
 }, 0); // 0 is initial value
 
 // console.log(total);
+
+// IndexOf
+const admins = [2, 1, 5];
+
+const user = {
+  name: "XYZ",
+  id: 5,
+};
+
+const index = admins.indexOf(user.id);
+// console.log(index === -1 ? "none" : admins[index]);
+
+// includes
+
+console.log(admins.includes(user.id));
+
+// find
+const users = [
+  {
+    name: "xyz",
+    id: 1,
+  },
+  {
+    name: "abc",
+    id: 2,
+  },
+  {
+    name: "pqr",
+    id: 3,
+  },
+];
+
+const myUser = users.find((user) => {
+  return user.name === "xyz";
+});
+
+console.log(myUser);
+
+// sort
+
+const names = ["john", "shirish", "venish", "bhuvanesh"];
+
+console.log(names.sort());
+
+// splice => removes item from index for mentioned times (index, number of times delete the item)
+
+const names = ["john", "shirish", "venish", "bhuvanesh"];
+
+names.splice(0, 1); //  (index, number of times delete the item)
+console.log(names);
