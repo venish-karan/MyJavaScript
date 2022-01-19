@@ -51,7 +51,62 @@ actors.forEach((actor) => {
   //   console.log(actor);
 });
 
+// for of loop
 for (let actor of actors) {
-  console.log("for of loop");
-  console.log(actor);
+  //   console.log("for of loop");
+  //   console.log(actor);
 }
+
+// filter => we can remove the item that we want without changing the original array (returns new array)
+// const failed = actors.filter((actor) => {
+//   //   if (actor.payment <= 100) {
+//   //     return true;
+//   //   }
+
+//   //   return false;
+//   return actor.payment < 100;
+// });
+
+const failed = actors.filter((actor) => actor.payment < 100);
+
+// console.log(failed);
+
+// Map (return new array)
+
+const actorWithPayment = actors.map((actor) => {
+  return {
+    actorPayment: `${actor.name} ${actor.payment}`,
+  };
+});
+
+// console.log(actorWithPayment);
+
+// Reduce
+
+const movies = [
+  {
+    name: "Interstellar",
+    budget: 100,
+  },
+  {
+    name: "Social",
+    budget: 150,
+  },
+  {
+    name: "Matrix",
+    budget: 300,
+  },
+];
+
+// let total = 0;
+
+// movies.forEach((movie) => (total += movie.budget));
+
+// reduce
+const total = movies.reduce((acc, movie) => {
+  // naming convention acc = accumulator
+  acc = acc + movie.budget;
+  return acc;
+}, 0); // 0 is initial value
+
+// console.log(total);
